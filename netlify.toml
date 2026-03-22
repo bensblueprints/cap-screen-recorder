@@ -1,0 +1,16 @@
+[build]
+  base = "apps/web"
+  command = "cd ../.. && pnpm install && pnpm build:web"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+  NEXT_PUBLIC_DOCKER_BUILD = "false"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  directory = ".netlify/functions"
+  node_bundler = "esbuild"
